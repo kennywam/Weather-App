@@ -1,25 +1,22 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { optionType } from "./types";
-
 
 const App = (): JSX.Element => {
   //states
   const [term, setTerm] = useState<string>("");
   const [options, setOptions] = useState<[]>([]);
+  const [city, setCity] = useState<optionType | null>(null);
+
   const key = "f495d7f97a6e57761e65fbd47325f9b1";
 
-  const getSearchOptions = (value: string) => {
-  fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${key}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      const extractedOptions = data.map((item: { name: string }) => ({
-        name: item.name,
-      }));
-      setOptions(extractedOptions);
-    });
-};
+  const getSearchOptions = async (value: string) => {
+    fetch(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=5&appid=${key}`
+    )
+      .then((res) => res.json())
+      .then((data) => setOptions(data))
+      .catch((e) => console.log({ e }));
+  };
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim();
@@ -29,10 +26,31 @@ const App = (): JSX.Element => {
     getSearchOptions(value);
   };
 
+  const getForecast = (city: optionType) => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${key}`
+    )
+      .then((res) => res.json())
+      .then((data) => console.log({ data }))
+      .catch((error) => {
+        console.error("Error fetching weather data:", error);
+      });
+  };
+  const onSubmit = () => {
+    if (!city) return;
+
+    getForecast(city);
+  };
   const onOptionSelect = (option: optionType) => {
-     fetch(
-       `https://api.openweathermap.org/data/3.0/onecall?lat=${option.lat}&lon=${option.lon}&units=metric&appid=${key}`);
-  }
+    setCity(option);
+  };
+
+  useEffect(() => {
+    if (city) {
+      setTerm(city.name);
+      setOptions([]);
+    }
+  }, [city]);
 
   return (
     <main className="flex justify-center items-center bg-gradient-to-br from-sky-400  h-[100vh] w-full">
@@ -51,15 +69,23 @@ const App = (): JSX.Element => {
             onChange={onInputChange}
           />
           <ul className="absolute top-9 bg-white ml-1 rounded-b-md">
-            {options.map((option: optionType, index: number):JSX.Element => (
-              <li key={option.name + "-" + index}>
-                <button className="text-left text-sm w-full hover:bg-zinc-700 hover:text-white px-2 py-1 cursor-pointer" onClick={() => onOptionSelect(option)}>
-                  {option.name}
-                </button>
-              </li>
-            ))}
+            {options.map(
+              (option: optionType, index: number): JSX.Element => (
+                <li key={option.name + "-" + index}>
+                  <button
+                    className="text-left text-sm w-full hover:bg-zinc-700 hover:text-white px-2 py-1 cursor-pointer"
+                    onClick={() => onOptionSelect(option)}
+                  >
+                    {option.name}
+                  </button>
+                </li>
+              )
+            )}
           </ul>
-          <button className="rounded-r-md border-2 border-zinc-100 hover:border-zinc-500 hover:text-zinc-500  text-zinc-100 px-2 py-1 cursor-pointer">
+          <button
+            className="rounded-r-md border-2 border-zinc-100 hover:border-zinc-500 hover:text-zinc-500  text-zinc-100 px-2 py-1 cursor-pointer"
+            onClick={onSubmit}
+          >
             search
           </button>
         </div>
