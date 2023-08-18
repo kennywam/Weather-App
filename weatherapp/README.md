@@ -15,7 +15,7 @@ The Weather App is a web application that allows users to search for a place and
 
 ## How to Run the App
 
-Follow these steps to run the Weather Forecast App on your local machine:
+Follow these steps to run the Weather App on your local machine:
 
 1. Clone the repository:
 
