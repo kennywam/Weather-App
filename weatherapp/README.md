@@ -1,12 +1,12 @@
 # Weather Forecast App
 
-The Weather Forecast App is a web application that allows users to search for a place and check its weather forecast. It utilizes the OpenWeatherMap API to retrieve weather data based on user input.
+The Weather App is a web application that allows users to search for a place and check its weather. It utilizes the OpenWeatherMap API to retrieve weather data based on user input.
 
 ## Features
 
-- Search for a location to check its weather forecast.
+- Search for a location to check its weather .
 - Display a list of matching locations as the user types.
-- View weather details including temperature, humidity, and more.
+- View weather details including temperature, humidity, and wind.
 
 ## Technologies Used
 
@@ -23,7 +23,7 @@ Follow these steps to run the Weather Forecast App on your local machine:
 
 2. Navigate to the project directory:
 
-`cd weather-forecast-app`
+`cd weather-app`
 
 3. Install the dependencies:
 
