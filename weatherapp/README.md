@@ -1,7 +1,5 @@
 # Weather Forecast App
 
-![Weather Forecast App Screenshot](images\Screenshot 2023-08-18 093659.png)
-
 The Weather Forecast App is a web application that allows users to search for a place and check its weather forecast. It utilizes the OpenWeatherMap API to retrieve weather data based on user input.
 
 ## Features
@@ -21,15 +19,15 @@ Follow these steps to run the Weather Forecast App on your local machine:
 
 1. Clone the repository:
 
-###`git clone https://github.com/kennywam/Weather-App.git`
+`git clone https://github.com/kennywam/Weather-App.git`
 
 2. Navigate to the project directory:
 
-##3`cd weather-forecast-app`
+`cd weather-forecast-app`
 
 3. Install the dependencies:
 
-###`npm install`
+`npm install`
 
 4. Obtain an API key from [OpenWeatherMap](https://openweathermap.org/) by signing up and creating an API key.
 
@@ -40,6 +38,6 @@ Note: I included the API in the code to avoid gitigore
 
 6. Start the development server:
 
-###`npm start`
+`npm start`
 
 7. Open your browser and go to [http://localhost:3000](http://localhost:3000) to view the app.
