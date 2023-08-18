@@ -22,10 +22,10 @@ const Weather = ({ data }: Props): JSX.Element => {
             {data.name} <span className="font-thin">{data.country}</span>
           </h2>
           <h1 className="text-4xl font-extrabold">
-            <Degree temp={Math.round(today.main.temp)} />
+            <Degree temp={Math.round(today.main.temp)}/>C
           </h1>
           <p className="text-sm">
-            {today.weather[0].main} {today.weather[0].description}
+            {today.weather[0].main} ({today.weather[0].description})
           </p>
         </section>
         <section className="flex flex-wrap justify-between text-zinc-700">
