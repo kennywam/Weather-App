@@ -10,7 +10,7 @@ The Weather App is a web application that allows users to search for a place and
 
 ## Technologies Used
 
-- React: A JavaScript library for building user interfaces.
+- React, Typescript and Tailwind CSS.
 - OpenWeatherMap API: Provides weather data and forecasts.
 
 ## How to Run the App
