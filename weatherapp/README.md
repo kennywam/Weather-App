@@ -33,7 +33,7 @@ Follow these steps to run the Weather Forecast App on your local machine:
 
 5. Create a .env.local file in the project root directory and add your API key:
 
-REACT_APP_API_KEY=your_api_key_here
+`Weathe_App_API_KEY=your_api_key_here`
 Note: I included the API in the code to avoid gitigore
 
 6. Start the development server:
