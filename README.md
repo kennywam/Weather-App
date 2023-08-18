@@ -1,4 +1,4 @@
-# Weather Forecast App
+# Weather App
 
 The Weather App is a web application that allows users to search for a place and check its weather. It utilizes the OpenWeatherMap API to retrieve weather data based on user input.
 
