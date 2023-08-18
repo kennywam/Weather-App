@@ -22,7 +22,7 @@ const Weather = ({ data }: Props): JSX.Element => {
             {data.name} <span className="font-thin">{data.country}</span>
           </h2>
           <h1 className="text-4xl font-extrabold">
-            <Degree temp={Math.round(today.main.temp)}/>C
+            <Degree temp={Math.round(today.main.temp)} />C
           </h1>
           <p className="text-sm">
             {today.weather[0].main} ({today.weather[0].description})
@@ -32,15 +32,14 @@ const Weather = ({ data }: Props): JSX.Element => {
           <Tile
             icon="wind"
             title="Wind"
-            info={`${Math.round(today.wind.speed)} km/h`}  
+            info={`${Math.round(today.wind.speed) * 0.28} m/s`}
           />
-        
+
           <Tile
             icon="humidity"
             title="Humidity"
             info={`${today.main.humidity} %`}
           />
-        
         </section>
       </div>
     </div>
